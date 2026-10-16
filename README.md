@@ -6,6 +6,8 @@ Strona: https://dzabrys.github.io/Staz1-design-2/
 
 28 głównych stron, lokalne fonty, obrazy WebP i SVG, responsywny układ oraz animacje respektujące prefers-reduced-motion. Treść i nawigacja działają również bez JavaScript. Wersja porównawcza ma noindex,follow, aby nie konkurować w wyszukiwarkach z główną witryną.
 
+Kompozycja zdjęć strony głównej: osobne pola obrazu w kaflach, pełniejszy kadr hero i tekst pod zdjęciem. Style: image-composition.css; markup: homeRefreshed w website-refresh.js.
+
 ## Warianty
 
 - /1/ — alternatywa hero

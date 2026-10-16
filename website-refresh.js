@@ -33,6 +33,25 @@ const renderAudience = type => {
 };
 const homeRefreshed = () => {
  let html=home().replace("Zobacz więcej</span>","Gry dla szkół</span>").replace("Zobacz więcej</span>","Gry dla firm</span>").replace("Zobacz więcej</span>","Własny projekt</span>");
+ // Give each illustration its own field instead of masking it behind the text.
+ const photos=[
+  ['home-242-170-305-234.webp',305,234,'Ilustracja dzieci przy wspólnej grze na planszy'],
+  ['home-253-418-295-245.webp',295,245,'Ilustracja zespołu podczas wspólnej rozgrywki'],
+  ['home-274-678-274-220.webp',274,220,'Ilustracja projektowania planszy do gry']
+ ];
+ let photoIndex=0;
+ html=html.replace(/<div class="card-photo">[\s\S]*?<\/div>/g,()=>{
+  const [file,width,height,alt]=photos[photoIndex++];
+  return `<div class="card-photo"><img class="audience-photo" src="assets/${file}" width="${width}" height="${height}" alt="${alt}" decoding="async"></div>`;
+ });
+ // Keep the complete scene above the copy and place the controls on the image.
+ const visualStart=html.indexOf('<img class="hero-photo"');
+ const copyStart=html.indexOf('<div class="hero-copy">',visualStart);
+ const statusStart=html.indexOf('<p class="visually-hidden" id="carousel-status"',copyStart);
+ const controlsStart=html.indexOf('<button class="carousel-prev"',statusStart);
+ const sectionEnd=html.indexOf('</section>',controlsStart);
+ const visual=html.slice(visualStart,copyStart).replace('<div class="hero-shade"></div>','');
+ html=html.slice(0,visualStart)+'<div class="hero-visual">'+visual+html.slice(controlsStart,sectionEnd)+'</div>'+html.slice(copyStart,controlsStart)+html.slice(sectionEnd);
  const audience=html.indexOf('<div class="audiences">'),hero=html.indexOf('<section class="hero-carousel"'),end=html.indexOf('</main>');
  return html.slice(0,audience)+html.slice(hero,end)+html.slice(audience,hero)+html.slice(end);
 };
