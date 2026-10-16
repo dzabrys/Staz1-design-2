@@ -27,7 +27,7 @@ const customProposal = () => `<main id="main" class="custom-main custom-proposal
    <p class="proposal-eyebrow">Dla szkół, firm i instytucji</p>
    <h1 id="custom-title">Gry na zamówienie.<br><em>Na Twój temat.</em></h1>
    <p class="proposal-lead">Projektujemy gry na zamówienie: wielkie plansze, puzzle i memory. Dopasowujemy temat, zasady i grafikę do Twojej grupy.</p>
-   <div class="proposal-actions">${button('Opowiedz o pomyśle','#zapytaj-o-projekt')}<a class="proposal-text-link" href="#formaty">Zobacz formaty ${arrows}</a></div>
+   <div class="proposal-actions">${button('Opowiedz o pomyśle','kontakt.html?rodzaj=custom#formularz-kontaktowy')}<a class="proposal-text-link" href="#formaty">Zobacz formaty ${arrows}</a></div>
    <p class="proposal-note">Nie potrzebujesz gotowego projektu. Zaczniemy od celu i odbiorców.</p>
   </div>
   <figure class="proposal-hero-visual"><img src="assets/oferta-custom-cover.webp" width="1200" height="1000" fetchpriority="high" decoding="async" alt="Ilustracja projektowania kolorowej planszy gry"><figcaption>Temat · zasady · projekt graficzny</figcaption></figure>
@@ -42,6 +42,6 @@ const customProposal = () => `<main id="main" class="custom-main custom-proposal
  </section>
  <section class="proposal-bottom" aria-label="Pytania i kontakt">
   <div class="proposal-faq" id="pytania"><p class="proposal-eyebrow">Przed pierwszą rozmową</p><h2>Co warto <em>wiedzieć?</em></h2>${customFaq.map(([q,a])=>`<details><summary>${q}</summary><div class="details-content"><p>${a}</p></div></details>`).join('')}</div>
-  <aside class="proposal-contact" id="zapytaj-o-projekt" aria-labelledby="proposal-contact-title"><p class="proposal-eyebrow">Zacznijmy od Twojej grupy</p><h2 id="proposal-contact-title">Masz temat?<br><em>Zamieńmy go w grę.</em></h2><p>Napisz, dla kogo ma powstać gra, jaki ma cel i kiedy jej potrzebujesz. Resztę ustalimy podczas rozmowy.</p>${button('Napisz o swoim pomyśle',customMail)}<p class="proposal-mail-note">Otworzy się Twoja poczta ze szkicem zapytania.</p><address><strong>Wielkie Gry Planszowe</strong><a href="mailto:biuro@wielkiegryplanszowe.pl">biuro@wielkiegryplanszowe.pl</a><a href="tel:+48600894644">+48 600 894 644</a><span>ul. Lubelska 37D, 10-408 Olsztyn</span></address><a class="proposal-text-link" href="kontakt.html">Wszystkie dane kontaktowe ${arrows}</a></aside>
+  <aside class="proposal-contact" id="zapytaj-o-projekt" aria-labelledby="proposal-contact-title"><p class="proposal-eyebrow">Zacznijmy od Twojej grupy</p><h2 id="proposal-contact-title">Masz temat?<br><em>Zamieńmy go w grę.</em></h2><p>Napisz, dla kogo ma powstać gra, jaki ma cel i kiedy jej potrzebujesz. Resztę ustalimy podczas rozmowy.</p>${button('Przygotuj zapytanie','kontakt.html?rodzaj=custom#formularz-kontaktowy')}<p class="proposal-mail-note">Krótki formularz. Wystarczy opisać cel i grupę.</p><address><strong>Wielkie Gry Planszowe</strong><a href="mailto:biuro@wielkiegryplanszowe.pl">biuro@wielkiegryplanszowe.pl</a><a href="tel:+48600894644">+48 600 894 644</a><span>ul. Lubelska 37D, 10-408 Olsztyn</span></address><a class="proposal-text-link" href="kontakt.html">Wszystkie dane kontaktowe ${arrows}</a></aside>
  </section>
  </main>`;

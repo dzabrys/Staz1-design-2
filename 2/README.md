@@ -1,6 +1,6 @@
 # Wariant katalogu 2
 
-Adres: https://dzabrys.github.io/Staz1/2/
+Adres: https://dzabrys.github.io/Staz1-design-2/2/
 
 Każda kategoria pokazuje najpierw pięć produktów. Gdy jest ich więcej, natywny element details rozwija następne karty w dół. Kategoria Nauka przez działanie zawiera w tym wariancie dziesięć istniejących gier edukacyjnych. Pozostałe dwie kategorie mają po pięć, więc nie pokazują przycisku rozwijania. Nie dodano fikcyjnych produktów.
 

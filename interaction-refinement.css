@@ -1,0 +1,105 @@
+/* v61: compact reading rhythm and progressively disclosed optional fields. */
+:is(.page-school,.page-company,.page-custom) { --intro-title: clamp(38px,3vw,56px); --intro-body: 19px; }
+.audience-hero-copy h1,.custom-proposal .proposal-intro h1 { font-size: var(--intro-title); line-height: 1.06; margin-bottom: 16px; }
+.audience-lead,.custom-proposal .proposal-lead { font-size: var(--intro-body); line-height: 1.5; }
+.audience-hero-copy > .site-eyebrow,.custom-proposal .proposal-intro > .proposal-eyebrow { font-size: 13px; line-height: 1.4; margin-bottom: 10px; }
+@media (min-width:1201px) and (max-height:850px) {
+ :is(.page-school,.page-company,.page-custom) { --intro-title: 38px; --intro-body: 17px; }
+}
+@media (max-width:1000px) {
+ :is(.page-school,.page-company,.page-custom) { --intro-title: 36px; --intro-body: 17px; }
+}
+.breadcrumb [aria-current="page"], .breadcrumb li:last-child { color: #a43d10; }
+:is(textarea,select):focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+#main:focus,.contact-inquiry:focus { outline: none; }
+.product-image-open { display: block; color: inherit; }
+.catalog-copy .price-block { margin: auto 0 0; padding-top: 14px; padding-bottom: 12px; }
+.catalog-meta { font-size: 13px; }
+.catalog-copy .price-block > span { font-size: 12px; }
+.hero-carousel { touch-action: pan-y pinch-zoom; }
+.audience-page .game-card { position: relative; isolation: isolate; overflow: visible; }
+.audience-page .game-link { border-radius: inherit; overflow: hidden; }
+.audience-page .game-card:before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; box-shadow: 0 12px 30px -8px #10247835; opacity: 0; transition: opacity .6s cubic-bezier(.25,.1,.25,1); }
+.audience-page .game-card:is(:hover,:focus-within) { box-shadow: var(--quiet-shadow),inset 0 0 0 1px #1024780a; }
+@media (hover:hover) and (pointer:fine) {
+ .audience-page .game-card:is(:hover,:focus-within):before { opacity: 1; }
+}
+@media (max-width:1200px) {
+ #app > .header nav.open { max-height: calc(100dvh - 92px); overflow-y: auto; overscroll-behavior: contain; }
+}
+@media (min-width:761px) {
+ .page-offer { --selection-real-height: max(240px,min(calc(var(--selection-card-height) + 120px),calc(72vw - 34.56px))); }
+ .page-offer .selection-grid { width: min(1264px,calc(100vw - 48px),calc(var(--selection-card-height) * 1.6 + 40px)); height: var(--selection-real-height); top: calc(50% - var(--selection-real-height) / 2 + 60px); }
+}
+.contact-form-jump { margin-top: 16px; text-decoration: underline; text-underline-offset: 5px; }
+.contact-inquiry .selected-inquiry { padding: 12px 14px; margin-top: 18px; background: #eaf3fa; }
+.contact-inquiry .selected-inquiry strong { font-size: 16px; overflow-wrap: anywhere; }
+.contact-inquiry :is(.inquiry-context,.inquiry-details) { margin: 0; border: 0; border-bottom: 1px solid #1024781c; }
+.contact-inquiry .inquiry-context { margin-top: 20px; border-top: 1px solid #1024781c; }
+.contact-inquiry :is(.inquiry-context,.inquiry-details) > summary { display: flex; align-items: center; gap: 8px; list-style: none; min-height: 54px; padding: 14px 0; cursor: pointer; font-size: 14px; font-weight: 700; line-height: 1.45; }
+.contact-inquiry :is(.inquiry-context,.inquiry-details) > summary::-webkit-details-marker { display: none; }
+.contact-inquiry :is(.inquiry-context,.inquiry-details) > summary:after { content: ''; flex: 0 0 7px; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); margin: -4px 3px 0 auto; transition: transform .25s; }
+.contact-inquiry :is(.inquiry-context,.inquiry-details)[open] > summary:after { transform: rotate(225deg); margin-top: 4px; }
+.contact-inquiry summary small { font-size: 12px; font-weight: 400; color: #536076; }
+.contact-inquiry :is(.inquiry-context,.inquiry-details)[open] > .inquiry-grid { padding-block: 4px 20px; }
+.contact-inquiry .inquiry-intro > .inquiry-required { margin-top: 10px; }
+.contact-inquiry .inquiry-form { margin-top: 20px; }
+.contact-inquiry .inquiry-status { scroll-margin-block: 24px; }
+.page-error { background: #fff; }
+.error-main { max-width: 800px; margin: 0 auto; padding: clamp(48px,9vh,100px) 24px 64px; }
+.error-main h1 { font-size: clamp(36px,4.2vw,64px); line-height: 1.08; margin-bottom: 24px; }
+.error-main > p:not(.site-eyebrow) { max-width: 52ch; font-size: 18px; line-height: 1.65; color: #46546c; }
+.error-actions { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; margin-top: 28px; }
+.error-contact { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; margin-top: 24px; text-decoration: underline; text-underline-offset: 4px; }
+@media (min-width:1001px) {
+ .contact-form-jump { display: none; }
+}
+@media (max-width:700px) {
+ .audience-page .age { font-size: 12px; }
+ .audience-page .game-copy .price-block > span { font-size: 12px; }
+ .catalog-copy { padding-top: 12px; }
+ .catalog-meta { font-size: 12px; line-height: 1.4; min-height: 1.4em; }
+ .catalog-copy h3 { font-size: 18px; }
+ .catalog-copy > p { font-size: 14px; line-height: 1.45; min-height: 2.9em; }
+ .catalog-copy .price-block { padding-top: 10px; padding-bottom: 10px; margin: auto 0 0; }
+ .catalog-copy .price-block strong { font-size: 20px; }
+ .catalog-copy .price-block > span { font-size: 12px; }
+ .catalog-link { font-size: 13px; min-height: 42px; padding-top: 10px; }
+ .catalog-section-heading h2 { font-size: 24px; }
+ .product-board > img { padding: 18px; }
+ .product-contact-note { font-size: 13px; line-height: 1.5; }
+ .contact-introduction .contact-lead { font-size: 16px; }
+ .contact-direct-v60 { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 18px; }
+ .contact-direct-v60 div:first-child { grid-column: 1/-1; }
+ .contact-direct-v60 a { min-height: 36px; }
+ .contact-direct-v60 div > span { margin-bottom: 3px; }
+ .contact-direct-v60 div:last-child { padding: 0; border: 0; }
+ .contact-direct-v60 p { font-size: 15px; }
+ .contact-before { margin-top: 12px; padding-top: 12px; }
+ .contact-before summary { font-size: 16px; }
+ .contact-inquiry textarea { min-height: 148px; }
+ .contact-inquiry :is(.inquiry-context,.inquiry-details) > summary { gap: 6px; font-size: 13px; }
+ .contact-inquiry summary small { font-size: 11px; }
+}
+@media (max-width:359px) {
+ .catalog-copy h3 { min-height: 0; }
+ .catalog-copy > p { min-height: 0; }
+ .contact-inquiry :is(.inquiry-context,.inquiry-details) > summary { flex-wrap: wrap; }
+ .contact-inquiry summary small { display: none; }
+}
+/* Motion preferences apply to hover feedback as well as entrance effects. */
+@media (prefers-reduced-motion:reduce) {
+ html { scroll-behavior: auto; }
+ .page-home .audience,.page-home .hero-photo,.page-home .button,.page-home .button svg,.page-home .carousel-prev,.page-home .carousel-next,
+ .game-card,.game-card:before,.game-more,.game-more svg,body:not(.page-home) .button,body:not(.page-home) .button svg,
+ .product-zoom,.product-image-close,.header .nav-label-fill { transition: none !important; }
+ .page-home .audience:is(:hover,:focus-within,:active),.page-home .button:is(:hover,:focus-visible,:active),.page-home .button:is(:hover,:focus-visible) svg,
+ .page-home :is(.carousel-prev,.carousel-next):is(:hover,:focus-visible),body:not(.page-home) .button:is(:hover,:focus-visible,:active),body:not(.page-home) .button:is(:hover,:focus-visible) svg,
+ .game-card:is(:hover,:focus-within,:active),.game-card:is(:hover,:focus-within) .game-more,.game-card:is(:hover,:focus-within) .game-more:hover,.game-card .game-more:hover svg,
+ .product-image-open:is(:hover,:focus-visible) .product-zoom,.product-image-open:active .product-zoom { transform: none !important; }
+ .catalog-card,.catalog-card:before,.catalog-arrow,.catalog-link svg,
+ .page-offer .selection-card,.page-offer .selection-card:before,.page-offer .selection-link,.page-offer .selection-arrow svg,
+ .contact-inquiry summary:after { transition: none !important; }
+ .catalog-card:is(:hover,:focus-within,:active),.catalog-card:is(:hover,:focus-within) .catalog-arrow,.catalog-card .catalog-link:hover .catalog-arrow,.catalog-card .catalog-link:hover svg,
+ .page-offer .selection-card:is(:hover,:focus-visible,:active),.page-offer .selection-card:is(:hover,:focus-visible) .selection-arrow svg,.page-offer .selection-card .selection-link:hover,.page-offer .selection-card:focus-visible .selection-link,.page-offer .selection-card .selection-link:hover .selection-arrow svg { transform: none !important; }
+}

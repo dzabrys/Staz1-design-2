@@ -1,11 +1,13 @@
 {
-  "name": "wielkie-gry-planszowe",
+  "name": "staz1-design-2",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "node tools/build.cjs",
     "start": "node tools/serve.cjs",
-    "check:offer": "node tools/offer-check.cjs"
+    "check:offer": "node tools/offer-check.cjs",
+    "check:inquiry": "node tools/inquiry-check.cjs",
+    "check:interaction": "node tools/interaction-check.cjs"
   },
   "devDependencies": {
     "lightningcss": "^1.33.0"

@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'2');
 const source=fs.readFileSync(path.join(root,'templates.js'),'utf8')+'\n'+fs.readFileSync(path.join(root,'offer-templates.js'),'utf8');
-const context=vm.createContext({location:{pathname:'/Staz1/wielkie-gry-planszowe.html'},document:{body:{}},assetCrop:(s,x,y,w,h,cls='',alt='')=>`<img class="crop ${cls}" src="assets/${s}-${x}-${y}-${w}-${h}.webp" width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async">`});
+const context=vm.createContext({location:{pathname:'/Staz1-design-2/wielkie-gry-planszowe.html'},document:{body:{}},assetCrop:(s,x,y,w,h,cls='',alt='')=>`<img class="crop ${cls}" src="assets/${s}-${x}-${y}-${w}-${h}.webp" width="${w}" height="${h}" alt="${alt}" loading="lazy" decoding="async">`});
 vm.runInContext(source,context);
 const groups=vm.runInContext('JSON.stringify([{title:"Przygoda i wspólna zabawa",id:"przygodowe",items:classicGames},{title:"Nauka przez działanie",id:"dla-szkol",items:educationalGames},{title:"Wspólne wyzwania zespołu",id:"dla-firm",items:educationalGames.filter(g=>g.group==="company")}])',context);
 const render=group=>{
@@ -31,7 +31,7 @@ const css=`
 @media(prefers-reduced-motion:reduce){.catalog-more-content{animation:none!important}.catalog-more summary,.catalog-more summary svg{transition:none!important}.catalog-more summary{transform:none!important}}
 `;
 const hash=crypto.createHash('sha256').update(css).digest('hex').slice(0,12);
-html=html.replace('<head>','<head><base href="../">').replace(/name="robots" content="[^"]+"/,'name="robots" content="noindex,follow"')
+html=html.replace('<head>','<head><base href="../">').replace(/href="#([^"]+)"/g,'href="2/#$1"').replace(/name="robots" content="[^"]+"/,'name="robots" content="noindex,follow"')
  .replace('</head>',`<link rel="stylesheet" href="2/catalog.css?v=${hash}"></head>`)
  .replace(/(<meta property="og:url" content=")[^"]+/, '$1'+new URL('2/',canonical).href)
  .replace('<div class="offer-heading">','<p class="catalog-variant-note">Wariant katalogu · <a href="wielkie-gry-planszowe.html">Wróć do wersji głównej</a></p><div class="offer-heading">');

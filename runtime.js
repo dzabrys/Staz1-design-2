@@ -2,6 +2,10 @@
 (() => {
   const $ = selector => document.querySelector(selector);
   const motionPreference = matchMedia('(prefers-reduced-motion:reduce)');
+  const watchMedia = (media, listener) => {
+    if(media.addEventListener)media.addEventListener('change',listener);
+    else media.addListener?.(listener);
+  };
   const surfaceMotion = new WeakMap();
   const closingDialogs = new WeakSet();
   const openSurface = (element, duration = 220, distance = 6) => {
@@ -54,7 +58,7 @@
   document.addEventListener('click', event => {
     if(!event.target.closest('.header') && nav.classList.contains('open'))setMenu(false);
   });
-  matchMedia('(min-width:1001px)').addEventListener('change', event => {if(event.matches)setMenu(false)});
+  watchMedia(matchMedia('(min-width:1201px)'), event => {if(event.matches)setMenu(false)});
   nav.addEventListener('focusout', event => {
     if(event.relatedTarget && !nav.contains(event.relatedTarget) && event.relatedTarget!==menu)setMenu(false);
   });
@@ -95,11 +99,31 @@
     $('.carousel-prev').addEventListener('click',()=>show(active-1));
     $('.carousel-next').addEventListener('click',()=>show(active+1));
     document.querySelectorAll('[data-slide]').forEach(button=>button.addEventListener('click',()=>show(Number(button.dataset.slide))));
+    const carousel=$('.hero-carousel');
+    carousel.addEventListener('keydown',event=>{
+      if(event.altKey||event.ctrlKey||event.metaKey||!event.target.closest('.carousel-prev,.carousel-next,[data-slide]'))return;
+      if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+      event.preventDefault();
+      show(event.key==='Home'?0:event.key==='End'?slides.length-1:active+(event.key==='ArrowLeft'?-1:1));
+      carousel.querySelector('[data-slide="'+active+'"]').focus({preventScroll:true});
+    });
+    let swipe;
+    carousel.addEventListener('pointerdown',event=>{
+      if(event.pointerType!=='touch'||!event.isPrimary||event.target.closest('a,button'))return;
+      swipe={id:event.pointerId,x:event.clientX,y:event.clientY};
+    },{passive:true});
+    carousel.addEventListener('pointerup',event=>{
+      if(!swipe||swipe.id!==event.pointerId)return;
+      const dx=event.clientX-swipe.x,dy=event.clientY-swipe.y;swipe=null;
+      if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)show(active+(dx<0?1:-1));
+    },{passive:true});
+    carousel.addEventListener('pointercancel',()=>{swipe=null},{passive:true});
   }
 
   const imageTrigger=$('.product-image-open'), imageDialog=$('#product-image-dialog');
-  if(imageTrigger && imageDialog){
-    imageTrigger.addEventListener('click',()=>{imageDialog.showModal();openSurface(imageDialog)});
+  if(imageTrigger && imageDialog && typeof imageDialog.showModal==='function'){
+    imageTrigger.setAttribute('aria-haspopup','dialog');imageTrigger.setAttribute('aria-controls',imageDialog.id);
+    imageTrigger.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();imageDialog.showModal();openSurface(imageDialog)});
     installDialog(imageDialog, $('.product-image-close'));
     imageDialog.addEventListener('close',()=>imageTrigger.focus({preventScroll:true}));
   }
